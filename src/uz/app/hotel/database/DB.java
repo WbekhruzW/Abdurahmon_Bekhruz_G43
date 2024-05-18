@@ -1,5 +1,6 @@
 package uz.app.hotel.database;
 
+import uz.app.hotel.Util;
 import uz.app.hotel.entity.Hotel;
 import uz.app.hotel.entity.Reservation;
 import uz.app.hotel.entity.User;
@@ -47,11 +48,22 @@ public class DB implements HotelService, ReservationService {
 
     @Override
     public boolean edit(String id, Hotel hotel) {
-        return false;
+        if(!hotel.getId().equals(id)) {
+            return false;
+        }
+        AdminServiseByAbdurahmon admin = new AdminServiseByAbdurahmon();
+        admin.editAndAdd(hotel);
+        return true;
     }
 
     @Override
     public boolean delete(String id) {
+        for (Hotel hotel : hotels) {
+            if(hotel.getId().equals(id)) {
+                hotels.remove(hotel);
+                return true;
+            }
+        }
         return false;
     }
 

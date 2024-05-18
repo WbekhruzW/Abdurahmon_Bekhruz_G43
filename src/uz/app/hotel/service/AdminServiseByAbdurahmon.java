@@ -4,6 +4,8 @@ import uz.app.hotel.Util;
 import uz.app.hotel.database.DB;
 import uz.app.hotel.entity.Hotel;
 import uz.app.hotel.entity.Location;
+import uz.app.hotel.entity.Reservation;
+import uz.app.hotel.entity.User;
 
 import java.util.List;
 import java.util.Objects;
@@ -45,22 +47,41 @@ public class AdminServiseByAbdurahmon implements AdminService
 
     @Override
     public void editHotel() {
-
+        String id = Util.getLine("Enter id for edit hotel = > ");
+        Hotel hotel = database.show(id);
+        if(hotel==null) {
+            System.out.println("Incorrect id");
+            return;
+        }
+        boolean edit = database.edit(id, hotel);
+        System.out.println("Hotel edited !");
     }
 
     @Override
     public void deleteHotel() {
+        String id = Util.getLine("Enter id for edit hotel = > ");
+        Hotel hotel = database.show(id);
+        if(hotel==null) {
+            System.out.println("Incorrect id");
+            return;
+        }
+        boolean edit = database.delete(id);
+        System.out.println("Hotel deleted !");
 
     }
 
     @Override
     public void showUsers() {
-
+        for (User user : database.users) {
+            System.out.println(user);
+        }
     }
 
     @Override
     public void showReservationHistory() {
-
+        for (Reservation reservation : database.reservations) {
+            System.out.println(reservation);
+        }
     }
 
     @Override
