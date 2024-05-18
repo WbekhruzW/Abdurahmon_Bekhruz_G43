@@ -1,3 +1,4 @@
+
 import uz.app.hotel.Util;
 import uz.app.hotel.database.DB;
 import uz.app.hotel.entity.Role;
@@ -8,8 +9,11 @@ import uz.app.hotel.service.UserServiceByBekhruz;
 import java.util.Objects;
 
 public class Test implements AuthService {
+
+
+public class Test {
     public static void main(String[] args) {
-        
+     
     }
     public DB db = DB.getInstance();
     @Override
