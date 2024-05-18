@@ -14,7 +14,7 @@ public class DB {
     public List<Reservation> reservations = new ArrayList<>();
     public List<User> users = new ArrayList<>();
     public User currentUser;
-
+  
     private static DB db ;
     public static DB getInstance(){
         if (db == null)
