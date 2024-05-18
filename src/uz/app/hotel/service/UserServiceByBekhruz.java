@@ -36,9 +36,7 @@ public class UserServiceByBekhruz implements UserService{
     private static UserServiceByBekhruz userServiceByBekhruz;
     @Override
     public UserServiceByBekhruz service() {
-        if (userServiceByBekhruz == null)
-            userServiceByBekhruz= new UserServiceByBekhruz();
-        return userServiceByBekhruz;
+        return null;
     }
     public static UserServiceByBekhruz service1() {
         if (userServiceByBekhruz == null)
@@ -47,15 +45,17 @@ public class UserServiceByBekhruz implements UserService{
     }
 
     @Override
-    public void showHotels() {
+    public boolean showHotels() {
         if (database.hotels.isEmpty()){
             System.out.println("Uzur lekn hali Hotella yoq!");
+            return true;
         }
         int i = 1;
         for (Hotel h : database.hotels) {
             System.out.println(i + ". " + h);
             i++;
         }
+        return false;
     }
 
     @Override
@@ -73,7 +73,9 @@ public class UserServiceByBekhruz implements UserService{
 
     @Override
     public void reserve() {
-        showHotels();
+        if (showHotels()){
+            return;
+        }
         Hotel hotel = database.hotels.get(Util.getInt("Qaysi hotelda qomoxchisiz?"));
         Reservation reservation = new Reservation(database.currentUser,hotel,Util.getInt(hotel.getFloors() + "Qaysi floorda?"),Util.getInt(hotel.getRoomsCount() + "Qaysi roomda?"),LocalDate.parse(Util.getLine("Data ni '0000-00-00' tarzda kiriting || Qachon kelasan?")),LocalDate.parse(Util.getLine("Data ni '0000-00-00' tarzda kiriting || Qachon ketasan?")));
         database.reservations.add(reservation);
@@ -96,6 +98,9 @@ public class UserServiceByBekhruz implements UserService{
 
     @Override
     public void rescheduleReservation() {
+        if (database.reservations.isEmpty()){
+            return;
+        }
         if (database.currentUser.getRole() == Role.USER) {
             for (int i = 0; i < database.reservations.size(); i++) {
                 if (database.reservations.get(i).getUser() == database.currentUser) {
