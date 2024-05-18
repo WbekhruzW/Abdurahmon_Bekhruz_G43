@@ -4,14 +4,23 @@ import java.util.UUID;
 
 public class User {
     private final String  id= UUID.randomUUID().toString();
+    private Role role;
     private String name;
     private String username;
     private String password;
 
-    public User(String name, String username, String password) {
+    public User(String name, String username, String password,Role role) {
         this.name = name;
         this.username = username;
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getName() {

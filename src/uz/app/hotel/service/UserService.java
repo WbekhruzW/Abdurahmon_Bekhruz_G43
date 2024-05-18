@@ -1,7 +1,7 @@
 package uz.app.hotel.service;
 
 public interface UserService {
-    void service();
+    UserServiceByBekhruz service();
     void showHotels();
     void showReservations();
     void reserve();
