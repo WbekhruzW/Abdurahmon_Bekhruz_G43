@@ -16,6 +16,13 @@ public class Hotel {
         this.roomsCount = roomsCount;
     }
 
+    public Hotel() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
     public Integer getFloors() {
         return floors;
     }
