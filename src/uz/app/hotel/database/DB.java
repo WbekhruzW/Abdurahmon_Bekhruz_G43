@@ -9,10 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DB {
+
     public List<Hotel> hotels = new ArrayList<>();
     public List<Reservation> reservations = new ArrayList<>();
     public List<User> users = new ArrayList<>();
     public User currentUser;
+  
     private static DB db ;
     public static DB getInstance(){
         if (db == null)
