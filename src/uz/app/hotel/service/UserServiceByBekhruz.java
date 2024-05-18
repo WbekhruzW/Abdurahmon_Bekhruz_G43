@@ -1,6 +1,9 @@
 package uz.app.hotel.service;
 
+import uz.app.hotel.database.DB;
+
 public class UserServiceByBekhruz implements UserService{
+    DB database = DB.getInstance();
     @Override
     public void service() {
 
@@ -8,7 +11,9 @@ public class UserServiceByBekhruz implements UserService{
 
     @Override
     public void showHotels() {
+        if (database.hotels.isEmpty()){
 
+        }
     }
 
     @Override
