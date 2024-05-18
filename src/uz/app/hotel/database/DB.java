@@ -57,7 +57,8 @@ public class DB implements HotelService, ReservationService {
 
     @Override
     public boolean addReservation(Reservation reservation) {
-        return false;
+        reservations.add(reservation);
+        return true;
     }
 
     @Override
