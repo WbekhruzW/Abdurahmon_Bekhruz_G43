@@ -13,6 +13,7 @@ public class Reservation {
     private LocalDate endDate;
     private LocalDate earliestFinishedDate;
     private Boolean earlierFinished;
+    private boolean reshuled;
 
 
     public Reservation(User user, Hotel hotel, Integer floor, Integer room, LocalDate startDate, LocalDate endDate) {
@@ -22,6 +23,14 @@ public class Reservation {
         this.room = room;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public boolean isReshuled() {
+        return reshuled;
+    }
+
+    public void setReshuled(boolean reshuled) {
+        this.reshuled = reshuled;
     }
 
     public String getId() {
