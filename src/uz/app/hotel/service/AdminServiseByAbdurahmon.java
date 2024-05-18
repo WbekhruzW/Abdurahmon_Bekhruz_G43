@@ -7,6 +7,7 @@ import uz.app.hotel.entity.Location;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 public class AdminServiseByAbdurahmon implements AdminService
 {
@@ -32,12 +33,14 @@ public class AdminServiseByAbdurahmon implements AdminService
 
     @Override
     public void showHotel() {
-
+        String id = Util.getLine("Enter hotel id = >");
+        Hotel hotel = database.show(id);
+        System.out.println(hotel);
     }
 
     @Override
     public void showHotels() {
-
+        database.showAll().forEach((hotel) -> System.out.println(hotel));
     }
 
     @Override
